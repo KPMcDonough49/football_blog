@@ -196,7 +196,7 @@ def return_penalty_df(data):
 
     return penalty_df
 
-def def_stats_df(data):
+def return_def_stats_df(data):
 
     periods = data['periods']
 
@@ -252,7 +252,8 @@ def def_stats_df(data):
         stats_df = stats_df.append(play_df)
     
     def_stats_df = stats_df[stats_df['stat_type'] == 'defense']
-    rel_cols = rel_cols = ['player.name', 'player.position', 'missed_tackles', 'def_target', 'def_comp', 'team.alias', 'play_id', 'missed_tackles']      
+    rel_cols = ['player.name', 'player.position', 'missed_tackles', 'def_target', 'def_comp', 'team.alias', 'play_id', 'missed_tackles']
+    def_stats_df = def_stats_df[(rel_cols)]      
     def_stats_df = def_stats_df[def_stats_df['def_target'] == 1]
 
     return def_stats_df
